@@ -23,12 +23,25 @@ var removeAll = function removeAll() {
   renderApp();
 };
 
+var onMakeDecision = function onMakeDecision() {
+  var randomNum = Math.floor(Math.random() * app.options.length);
+  var selectedOption = app.options[randomNum];
+  alert(selectedOption);
+};
+
 var appRoot = document.getElementById('app');
 
 var renderApp = function renderApp() {
   var template = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, app.title), app.subtitle && /*#__PURE__*/React.createElement("p", null, app.subtitle), /*#__PURE__*/React.createElement("button", {
     onClick: removeAll
-  }, "Remove"), /*#__PURE__*/React.createElement("p", null, app.options.length > 0 ? 'Here are your options' : 'No options'), /*#__PURE__*/React.createElement("p", null, app.options.length), /*#__PURE__*/React.createElement("form", {
+  }, "Remove All"), /*#__PURE__*/React.createElement("p", null, app.options.length > 0 ? 'Here are your options' : 'No options'), /*#__PURE__*/React.createElement("button", {
+    disabled: app.options.length <= 0,
+    onClick: onMakeDecision
+  }, "What should I do ?"), /*#__PURE__*/React.createElement("ol", null, app.options.map(function (option) {
+    return /*#__PURE__*/React.createElement("li", {
+      key: option
+    }, option);
+  })), /*#__PURE__*/React.createElement("form", {
     onSubmit: onFormSubmit
   }, /*#__PURE__*/React.createElement("input", {
     type: "text",
