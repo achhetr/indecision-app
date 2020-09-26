@@ -8,6 +8,7 @@ class IndecisionApp extends React.Component {
 		this.handleDeleteOption = this.handleDeleteOption.bind(this);
 
 		this.state = {
+			
 			options: [],
 		};
 	}
