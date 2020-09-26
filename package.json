@@ -5,9 +5,8 @@
 	"author": "Akash Chhetri <akash.chhetri1@gmail.com>",
 	"license": "MIT",
 	"scripts": {
-		"server": "live-server public/",
 		"build": "webpack --watch",
-		"build-babel": "babel src/app.js --out-file=public/scripts/app.js --watch"
+		"dev-server": "webpack-dev-server"
 	},
 	"dependencies": {
 		"react": "^16.13.1",
@@ -21,8 +20,9 @@
 		"@babel/preset-flow": "^7.10.4",
 		"@babel/preset-react": "^7.10.4",
 		"babel-loader": "^8.1.0",
-		"live-server": "^1.2.1",
+		"babel-plugin-transform-class-properties": "^6.24.1",
 		"webpack": "^4.44.2",
-		"webpack-cli": "^3.3.12"
+		"webpack-cli": "^3.3.12",
+		"webpack-dev-server": "^3.11.0"
 	}
 }
