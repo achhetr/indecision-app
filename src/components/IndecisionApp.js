@@ -62,7 +62,7 @@ export default class IndecisionApp extends React.Component {
 				}));
 			}
 
-			console.log('fetching data!, componentDidMount');
+			// console.log('fetching data!, componentDidMount');
 		} catch (err) {
 			console.log('error catch');
 		}
@@ -72,35 +72,41 @@ export default class IndecisionApp extends React.Component {
 		if (prevState.options.length !== this.state.options.length) {
 			const json = JSON.stringify(this.state.options);
 			localStorage.setItem('options', json);
-			console.log('saving data, componentDidUpdate');
+			// console.log('saving data, componentDidUpdate');
 		}
 	}
 
 	componentWillUnmount() {
-		console.log('Component will unmount, componentWillUnmount');
+		// console.log('Component will unmount, componentWillUnmount');
 	}
 
 	render() {
 		const subtitle = 'Put your life in the hands of a computer';
 		return (
-			<div>
+			<div className="container-background">
 				<Header subtitle={subtitle} />
-				<Action
-					hasOptions={this.state.options.length > 0}
-					onPick={this.handlePickOptions}
-				/>
-				{this.state.options.length > 0 && (
-					<Options
-						options={this.state.options}
-						handleDeleteOptions={this.handleDeleteOptions}
-						handleDeleteOption={this.handleDeleteOption}
+				<div className="container">
+					<Action
+						hasOptions={this.state.options.length > 0}
+						onPick={this.handlePickOptions}
 					/>
-				)}
-				<AddOption handleAddOption={this.handleAddOptions} />
-				<OptionModal
-					selectedOption={this.state.selectedOption}
-					handleClearSelectedOption={this.handleClearSelectedOption}
-				/>
+					<div className="widget">
+						{
+							<Options
+								options={this.state.options}
+								handleDeleteOptions={this.handleDeleteOptions}
+								handleDeleteOption={this.handleDeleteOption}
+							/>
+						}
+						<AddOption handleAddOption={this.handleAddOptions} />
+					</div>
+					<OptionModal
+						selectedOption={this.state.selectedOption}
+						handleClearSelectedOption={
+							this.handleClearSelectedOption
+						}
+					/>
+				</div>
 			</div>
 		);
 	}
