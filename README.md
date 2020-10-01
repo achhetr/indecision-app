@@ -16,6 +16,10 @@ git clone https://github.com/achhetr/indecision-app.git
 yarn install
 ```
 
+```
+yarn dev-server
+```
+
 ## Contributing
 
 Pull requests are not welcome.
